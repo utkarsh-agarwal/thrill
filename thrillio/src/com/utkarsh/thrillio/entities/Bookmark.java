@@ -1,4 +1,4 @@
-package thrillio.entities;
+package com.utkarsh.thrillio.entities;
 
 public class Bookmark {
 	private long id;

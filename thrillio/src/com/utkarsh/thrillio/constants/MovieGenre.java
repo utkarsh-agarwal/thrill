@@ -1,4 +1,4 @@
-package thrillio.constants;
+package com.utkarsh.thrillio.constants;
 
 public class MovieGenre {
 	private MovieGenre() {

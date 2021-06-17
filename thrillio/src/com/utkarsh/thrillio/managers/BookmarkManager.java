@@ -1,8 +1,8 @@
-package thrillio.managers;
+package com.utkarsh.thrillio.managers;
 
-import thrillio.entities.Book;
-import thrillio.entities.Movie;
-import thrillio.entities.WebLink;
+import com.utkarsh.thrillio.entities.Book;
+import com.utkarsh.thrillio.entities.Movie;
+import com.utkarsh.thrillio.entities.WebLink;
 
 public class BookmarkManager {
 	private static BookmarkManager instance = new BookmarkManager();
@@ -39,7 +39,7 @@ public class BookmarkManager {
 		book.setAuthors(authors);
 		book.setGenre(genre);
 		book.setAmazonRating(amazonrating);
-		fififif
+		
 		return book;
 	}
 

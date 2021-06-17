@@ -1,14 +1,14 @@
 package com.utkarsh.thrillio;
 
-import thrillio.constants.MovieGenre;
-import thrillio.constants.Gender;
-import thrillio.constants.UserType;
-import thrillio.constants.BookGenre;
-import thrillio.entities.Bookmark;
-import thrillio.entities.User;
-import thrillio.entities.UserBookmark;
-import thrillio.managers.BookmarkManager;
-import thrillio.managers.UserManager;
+import com.utkarsh.thrillio.constants.BookGenre;
+import com.utkarsh.thrillio.constants.Gender;
+import com.utkarsh.thrillio.constants.MovieGenre;
+import com.utkarsh.thrillio.constants.UserType;
+import com.utkarsh.thrillio.entities.Bookmark;
+import com.utkarsh.thrillio.entities.User;
+import com.utkarsh.thrillio.entities.UserBookmark;
+import com.utkarsh.thrillio.managers.BookmarkManager;
+import com.utkarsh.thrillio.managers.UserManager;
 
 public class DataStore {
 	private static final int USER_BOOKMARK_LIMIT = 5;

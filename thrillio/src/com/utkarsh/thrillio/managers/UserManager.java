@@ -1,6 +1,6 @@
-package thrillio.managers;
+package com.utkarsh.thrillio.managers;
 
-import thrillio.entities.User;
+import com.utkarsh.thrillio.entities.User;
 
 public class UserManager {
 	private static UserManager instance = new UserManager();

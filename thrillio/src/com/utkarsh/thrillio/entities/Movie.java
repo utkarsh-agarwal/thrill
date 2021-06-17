@@ -1,4 +1,4 @@
-package thrillio.entities;
+package com.utkarsh.thrillio.entities;
 
 public class Movie extends Bookmark {
       private int releaseYear;

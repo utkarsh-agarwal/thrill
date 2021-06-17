@@ -1,4 +1,4 @@
-package thrillio.entities;
+package com.utkarsh.thrillio.entities;
 
 public class UserBookmark {
 	private User user;
