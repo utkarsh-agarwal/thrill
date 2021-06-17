@@ -16,11 +16,13 @@ public class DataStore {
 	private static final int BOOKMARK_TYPES_COUNT = 3;
 	private static final int TOTAL_USER_COUNT = 5;
 	private static User[] users = new User[TOTAL_USER_COUNT];
+
 	public static User[] getUsers() {
 		return users;
 	}
 
 	private static Bookmark[][] bookmarks = new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
+
 	public static Bookmark[][] getBookmarks() {
 		return bookmarks;
 	}
@@ -69,12 +71,12 @@ public class DataStore {
 				8.5);
 		bookmarks[1][1] = BookmarkManager.getInstance().createMovie(3001, "The Grapes of Wrath", "", 1940,
 				new String[] { "Henry Fonda", "Jane Darwell" }, new String[] { "John Ford" }, MovieGenre.CLASSICS, 8.2);
-		bookmarks[1][2] = BookmarkManager.getInstance().createMovie(3002, "A Touch of Greatness","",2004,
+		bookmarks[1][2] = BookmarkManager.getInstance().createMovie(3002, "A Touch of Greatness", "", 2004,
 				new String[] { "Albert Cullum" }, new String[] { "Leslie Sullivan" }, MovieGenre.DOCUMENTARIES, 7.3);
-		bookmarks[1][3] = BookmarkManager.getInstance().createMovie(3003, "The Big Bang Theory","", 2007,
+		bookmarks[1][3] = BookmarkManager.getInstance().createMovie(3003, "The Big Bang Theory", "", 2007,
 				new String[] { "Kaley Cuoco", "Jim Parsons" }, new String[] { "Chuck Lorre", "Bill Prady" },
 				MovieGenre.TV_SHOWS, 8.7);
-		bookmarks[1][4] = BookmarkManager.getInstance().createMovie(3004, "Ikiru","", 1952,
+		bookmarks[1][4] = BookmarkManager.getInstance().createMovie(3004, "Ikiru", "", 1952,
 				new String[] { "Takashi Shimura", "Minoru Chiaki" }, new String[] { "Akira Kurosawa" },
 				MovieGenre.FOREIGN_MOVIES, 8.4);
 	}

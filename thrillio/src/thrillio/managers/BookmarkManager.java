@@ -14,7 +14,7 @@ public class BookmarkManager {
 		return instance;
 	}
 
-	public Movie createMovie(long id, String title, String profileUrl, int releaseYear, String[] cast, String directors,
+	public Movie createMovie(long id, String title, String profileUrl, int releaseYear, String[] cast, String[] directors,
 			String genre, double imdbRating) {
 		Movie movie = new Movie();
 		movie.setId(id);
