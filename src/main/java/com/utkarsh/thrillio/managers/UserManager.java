@@ -1,10 +1,13 @@
 package com.utkarsh.thrillio.managers;
 
+import java.util.List;
+
+import com.utkarsh.thrillio.dao.UserDao;
 import com.utkarsh.thrillio.entities.User;
 
 public class UserManager {
 	private static UserManager instance = new UserManager();
-
+private static UserDao dao = new UserDao();
 	private UserManager() {
 	}
 
@@ -23,6 +26,9 @@ public class UserManager {
           user.setGender(gender);
           user.setUserType(userType);
 		return user;
-          
+    }
+	
+	public List<User> getUser() {
+		return dao.getUser();
 	}
 }

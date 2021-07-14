@@ -1,11 +1,23 @@
 package com.utkarsh.thrillio.managers;
 
+
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.util.List;
+
+import com.utkarsh.thrillio.dao.BookmarkDao;
 import com.utkarsh.thrillio.entities.Book;
+import com.utkarsh.thrillio.entities.Bookmark;
 import com.utkarsh.thrillio.entities.Movie;
+import com.utkarsh.thrillio.entities.User;
+import com.utkarsh.thrillio.entities.UserBookmark;
 import com.utkarsh.thrillio.entities.WebLink;
+import com.utkarsh.thrillio.util.HttpConnect;
+import com.utkarsh.thrillio.util.IOUtil;
 
 public class BookmarkManager {
 	private static BookmarkManager instance = new BookmarkManager();
+	private static BookmarkDao dao = new BookmarkDao();
 
 	private BookmarkManager() {
 	}
@@ -30,7 +42,8 @@ public class BookmarkManager {
 
 	}
 
-	public Book createBook(long id, String title, int publicationYear,String publisher,String[] authors,String genre, double amazonrating) {
+	public Book createBook(long id, String title, int publicationYear, String publisher, String[] authors, String genre,
+			double amazonrating) {
 		Book book = new Book();
 		book.setId(id);
 		book.setTitle(title);
@@ -39,7 +52,7 @@ public class BookmarkManager {
 		book.setAuthors(authors);
 		book.setGenre(genre);
 		book.setAmazonRating(amazonrating);
-		
+
 		return book;
 	}
 
@@ -51,5 +64,49 @@ public class BookmarkManager {
 		weblink.setHost(host);
 
 		return weblink;
+	}
+
+	public List<List<Bookmark>> getBookmarks() {
+		return dao.getBookmarks();
+	}
+
+	public void saveUserBookmark(User user, Bookmark bookmark) {
+		UserBookmark userBookmark = new UserBookmark();
+		userBookmark.setUser(user);
+		userBookmark.setBookmark(bookmark);
+
+		if (bookmark instanceof WebLink) {
+			try {
+				String url = ((WebLink) bookmark).getUrl();
+				if (!url.endsWith(".pdf")) {
+					String webpage = HttpConnect.download(((WebLink) bookmark).getUrl());
+					if (webpage != null) {
+						IOUtil.write(webpage, bookmark.getId());
+					}
+				}
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+		}
+		dao.saveUserBookmark(userBookmark);
+	}
+
+	public void setKidFriendlyStatus(User user, String kidFriendlyStatus, Bookmark bookmark) {
+		bookmark.setKidFriendlyStatus(kidFriendlyStatus);
+		bookmark.setKidFriendlyMarkedBy(user);
+		System.out.println(
+				"Kid-friendly status: " + kidFriendlyStatus + " ,Marked by:" + user.getEmail() + ", " + bookmark);
+	}
+
+	public void share(User user, Bookmark bookmark) {
+		bookmark.setShareBy(user);
+		System.out.println("Data to be shared:");
+		if (bookmark instanceof Book) {
+			System.out.println(((Book) bookmark).getItemData());
+		} else if (bookmark instanceof WebLink) {
+			System.out.println(((WebLink) bookmark).getItemData());
+		}
 	}
 }
