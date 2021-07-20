@@ -1,15 +1,17 @@
 package com.utkarsh.thrillio.constants;
 
 public enum UserType {
-      
-       USER("user"),
-       EDITOR("editor"),
-       CHIEF_EDITOR("cheifeditor");
-       private UserType(String name) {
-    	   this.name = name;
-       }
-       private String name;
-       public String getName() {
-    	   return name;
-       }
+
+	USER(0), EDITOR(1), CHIEF_EDITOR(2);
+
+	private UserType(int name) {
+		this.name = name;
+	}
+
+	private int name;
+
+	public int getName() {
+		return name;
+	}
+
 }

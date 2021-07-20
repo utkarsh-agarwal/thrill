@@ -1,5 +1,6 @@
 package com.utkarsh.thrillio;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.utkarsh.thrillio.constants.KidFriendlyStatus;
@@ -23,11 +24,13 @@ public class View {
 //			System.out.println(bookmark);
 //		}
 //	}
-	public static void browse(User user, List<List<Bookmark>> bookmarks) {
+	
+	public static void browse(User user, List<List<Bookmark>> bookmarks) throws SQLException {
 		System.out.println("\n" + user.getEmail() + "is browsing items...");
+		@SuppressWarnings("unused")
 		int bookmarkCount = 0;
 
-		for (List<Bookmark> bookmarkList : bookmarks) {
+		for (List<Bookmark> bookmarkList : bookmarks) { 
 			for (Bookmark bookmark : bookmarkList) {
 				//if (bookmarkCount < DataStore.USER_BOOKMARK_LIMIT) {
 					boolean isBookmarked = getBookmarkDecision(bookmark);
@@ -69,9 +72,11 @@ public class View {
 	
 
 	private static KidFriendlyStatus getKidFriendlyStatusDecision(Bookmark bookmark) {
-		return Math.random() < 0.4 ? KidFriendlyStatus.APPROVED
+		/*return Math.random() < 0.4 ? KidFriendlyStatus.APPROVED
 				: (Math.random() >= 0.4 && Math.random() < 0.8) ? KidFriendlyStatus.REJECTED
-						: KidFriendlyStatus.UNKNOWN;
+						: KidFriendlyStatus.UNKNOWN;*/
+		double decision = Math.random();
+		return decision < 0.4 ? KidFriendlyStatus.APPROVED:(decision >= 0.4 && decision < 0.8) ? KidFriendlyStatus.REJECTED:KidFriendlyStatus.UNKNOWN;
 	}
 
 	private static boolean getBookmarkDecision(Bookmark bookmark) {

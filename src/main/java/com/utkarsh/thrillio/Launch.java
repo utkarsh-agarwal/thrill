@@ -1,7 +1,9 @@
 package com.utkarsh.thrillio;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import com.utkarsh.thrillio.bgjobs.WebpageDownloaderTask;
 import com.utkarsh.thrillio.entities.Bookmark;
 import com.utkarsh.thrillio.entities.User;
 import com.utkarsh.thrillio.managers.BookmarkManager;
@@ -24,12 +26,14 @@ public class Launch {
 
 	}
 
+	
 	private static void printUserData() {
 		for (User user : users) {
 			System.out.println(user);
 		}
 
 	}
+
 
 	private static void printBookmarkData() {
 		for (List<Bookmark> bookmarkList : bookmarks) {
@@ -39,16 +43,23 @@ public class Launch {
 		}
 	}
 
-	private static void start() {
+	private static void start() throws SQLException {
 		///System.out.println("\n2.Bookmarking...");
 		for (User user : users) {
 			View.browse(user, bookmarks);
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		loadData();
 		start();
+		//runDownLoaderJob();
+	}
+
+	private static void runDownLoaderJob() {
+		WebpageDownloaderTask task = new WebpageDownloaderTask(true);
+		(new Thread(task)).start();
+		
 	}
 
 }

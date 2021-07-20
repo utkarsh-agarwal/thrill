@@ -8,7 +8,7 @@ public abstract class Bookmark {
 	private String profileUrl;
 	private KidFriendlyStatus kidFriendlyStatus = KidFriendlyStatus.UNKNOWN;
 	private User kidFriendlyMarkedBy;
-	private User shareBy;
+	private User sharedBy;
 	
 	public long getId() {
 		return id;
@@ -41,10 +41,10 @@ public abstract class Bookmark {
 	public void setKidFriendlyMarkedBy(User kidFriendlyMarkedBy) {
 		this.kidFriendlyMarkedBy = kidFriendlyMarkedBy;
 	}
-	public User getShareBy() {
-		return shareBy;
+	public User getSharedBy() {
+		return sharedBy;
 	}
-	public void setShareBy(User shareBy) {
-		this.shareBy = shareBy;
+	public void setSharedBy(User shareBy) {
+		this.sharedBy = shareBy;
 	}
 }

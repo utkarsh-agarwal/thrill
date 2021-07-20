@@ -1,5 +1,7 @@
 package com.utkarsh.thrillio.controllers;
 
+import java.sql.SQLException;
+
 import com.utkarsh.thrillio.constants.KidFriendlyStatus;
 import com.utkarsh.thrillio.entities.Bookmark;
 import com.utkarsh.thrillio.entities.User;
@@ -19,7 +21,7 @@ public class BookmarkController {
      BookmarkManager.getInstance().saveUserBookmark(user, bookmark);
 	}
 
-	public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus ,Bookmark bookmark){
+	public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus ,Bookmark bookmark) throws SQLException{
 		BookmarkManager.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus,bookmark);
 	}
 

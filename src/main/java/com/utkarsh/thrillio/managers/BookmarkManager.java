@@ -3,6 +3,7 @@ package com.utkarsh.thrillio.managers;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.utkarsh.thrillio.constants.BookGenre;
@@ -96,20 +97,23 @@ public class BookmarkManager {
 		dao.saveUserBookmark(userBookmark);
 	}
 
-	public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus, Bookmark bookmark) {
+	public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus, Bookmark bookmark) throws SQLException {
 		bookmark.setKidFriendlyStatus(kidFriendlyStatus);
 		bookmark.setKidFriendlyMarkedBy(user);
+		dao.updateKidFriendlyStatus(bookmark);
 		System.out.println(
 				"Kid-friendly status: " + kidFriendlyStatus + " ,Marked by:" + user.getEmail() + ", " + bookmark);
 	}
 
 	public void share(User user, Bookmark bookmark) {
-		bookmark.setShareBy(user);
+		bookmark.setSharedBy(user);
 		System.out.println("Data to be shared:");
+		
 		if (bookmark instanceof Book) {
 			System.out.println(((Book) bookmark).getItemData());
 		} else if (bookmark instanceof WebLink) {
 			System.out.println(((WebLink) bookmark).getItemData());
 		}
+		dao.sharedByInfo(bookmark);
 	}
 }

@@ -3,6 +3,7 @@ package com.utkarsh.thrillio.managers;
 import java.util.List;
 
 import com.utkarsh.thrillio.constants.Gender;
+import com.utkarsh.thrillio.constants.UserType;
 import com.utkarsh.thrillio.dao.UserDao;
 import com.utkarsh.thrillio.entities.User;
 
@@ -17,7 +18,7 @@ private static UserDao dao = new UserDao();
 	}
 
 	public User CreateUser(long id, String email, String password, String firstName, String lastName, Gender gender,
-			String userType) {
+			UserType userType) {
           User user = new User();
           user.setId(id);
           user.setEmail(email);
@@ -26,7 +27,7 @@ private static UserDao dao = new UserDao();
           user.setLastName(lastName);
           user.setGender(gender);
           user.setUserType(userType);
-		return user;
+		  return user;
     }
 	
 	public List<User> getUser() {
